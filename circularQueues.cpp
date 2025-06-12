@@ -3,13 +3,13 @@ using namespace std;
 
 class Queues
 {
-private :
+private:
     static const int max = 5;
     int FRONT, REAR;
     int queue_array[5];
 
-public :
-    Queues ()
+public:
+    Queues()
     {
         FRONT = -1;
         REAR = -1;
@@ -23,30 +23,30 @@ public :
         cout << endl;
 
         // 1. Cek apakah antrian penuh
-    if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1))
-    {
-        cout << "Queue penuh" << endl;
-        return;
-    }
-    if (FRONT == -1)
-    {
-        FRONT = 0; // 2.a
-        REAR = 0;  // 2.b
-    }
-    else
-    {
-        // Jika REAR berada di posisi terakhir array, kembali ke awal array
-        if (REAR == max - 1)
-            REAR = 0;
+        if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1))
+        {
+            cout << "Queue penuh" << endl;
+            return;
+        }
+        if (FRONT == -1)
+        {
+            FRONT = 0; // 2.a
+            REAR = 0;  // 2.b
+        }
         else
-            REAR = REAR + 1;
-    }
-    queue_array[REAR] = num;
+        {
+            // Jika REAR berada di posisi terakhir array, kembali ke awal array
+            if (REAR == max - 1)
+                REAR = 0;
+            else
+                REAR = REAR + 1;
+        }
+        queue_array[REAR] = num;
     }
 
     void remove()
     {
-        //cek apakah antrian kosong
+        // cek apakah antrian kosong
         if (FRONT == -1)
         {
             cout << "Queue underflow\n";
@@ -62,7 +62,7 @@ public :
         }
         else
         {
-            //jika elemen yang dihapus berada di posisi terakhir array, kembali ke awal array
+            // jika elemen yang dihapus berada di posisi terakhir array, kembali ke awal array
             if (FRONT == max - 1)
                 FRONT = 0;
             else
@@ -76,7 +76,7 @@ public :
         int REAR_position = REAR;
 
         // Cek apakah antrian kosong
-        if (FRONT == - 1)
+        if (FRONT == -1)
         {
             cout << "Queue is empty\n";
             return;
@@ -84,7 +84,7 @@ public :
 
         cout << "\nElements in the queue are...\n";
 
-        //Jika FRONT_position <= REAR_position, iterasu daru front hingga rear
+        // Jika FRONT_position <= REAR_position, iterasu daru front hingga rear
         if (FRONT_position <= REAR_position)
         {
             while (FRONT_position <= REAR_position)
@@ -103,7 +103,13 @@ public :
             }
             FRONT_position = 0;
 
-            
+            while (FRONT_position <= REAR_position)
+            {
+                cout << queue_array[FRONT_position] << "  ";
+                FRONT_position++;
+            }
+            cout << endl;
         }
     }
 };
+
